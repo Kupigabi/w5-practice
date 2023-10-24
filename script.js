@@ -1,40 +1,53 @@
-import * as fs from 'node:fs'; // module szintaktika (package.json-ben "type":module kell hozzá)
-//const fs = require('fs') <= commonJS szintaktika
+console.log('loaded')
 
-/*try {
-  const data = fs.readFileSync('text.txt', 'utf8');
-  console.log(data);
-} catch (err) {
-  console.error('Error reading the file:', err);
-}
-*/
+const rootElement = document.querySelector("#root")
+console.log(rootElement)
 
-/*fs.readFile('text.txt', 'utf8', (err, data) => {
-  if (err) {
-    console.error('Error reading the file:', err);
-    return;
-  }
-  console.log(data);
-});*/
+/* rootElement.innerHTML = `
+    <h1>hello world</h1>
+    <div>
+        <p>lorem ipsum</p>
+        <h2>subtitle</h2>
+        <button>click me!</button>
+    </div>
+`
 
-/*try {
-    const data = fs.readFileSync('data.json', 'utf8');
-    const jsonData = JSON.parse(data);
-    console.log(jsonData);
-  } catch (err) {
-    console.error('Error reading or parsing the JSON file:', err);
-  }*/
+const array = ["kismacska", "kutyus", "zebra", "kecske"] */
 
-  fs.readFile('data.json', 'utf8', (err, data) => {
-    if (err) {
-      console.error('Error reading the JSON file:', err);
-      return;
+/* const jsonLikeArray = [
+    {
+        countryName: "Hungary",
+        population: 8900000
+    },
+    {
+        countryName: "England",
+        population: 18000000
+    },
+    {
+        countryName: "USA",
+        population: 230000000
     }
-    
-    try {
-      const jsonData = JSON.parse(data);
-      console.log(jsonData);
-    } catch (err) {
-      console.error('Error parsing the JSON data:', err);
-    }
-  });
+]
+
+for (let i = 0; i < jsonLikeArray.length; i++) {
+    rootElement.innerHTML += `
+        <h3>name: ${jsonLikeArray[i].countryName}</h3>
+        <h4>population: ${jsonLikeArray[i].population}</h4>
+    `
+} */
+
+fetch("https://restcountries.com/v3.1/all") // elküldjük adatért a JS-t, visszatér valamikor adattal
+    .then((res) => res.json()) // megjött az adat, de ki kell csomagolni, visszatér valamikor a kicsomagolt adattal
+    .then((data) => {
+        console.log(data)
+
+        for (let i = 0; i <data.length; i++) {
+            console.log(data[i].name.common)
+            console.log(data[i].population)
+
+            rootElement.innerHTML += `
+                <h3>country name: ${data[i].name.common}</h3>
+                <h4>country population: ${data[i].population}</h4>
+            `
+        }
+    }) // megjött a kicsomagolt adat, innentől használhatjuk
