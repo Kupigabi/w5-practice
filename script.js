@@ -38,7 +38,7 @@ for (let i = 0; i < jsonLikeArray.length; i++) {
 
 fetch("https://restcountries.com/v3.1/all") // elküldjük adatért a JS-t, visszatér valamikor adattal
     .then((res) => res.json()) // megjött az adat, de ki kell csomagolni, visszatér valamikor a kicsomagolt adattal
-    .then((data) => {
+    .then((data) => { // megjött a kicsomagolt adat, innentől használhatjuk
         console.log(data)
 
         for (let i = 0; i <data.length; i++) {
@@ -50,4 +50,4 @@ fetch("https://restcountries.com/v3.1/all") // elküldjük adatért a JS-t, viss
                 <h4>country population: ${data[i].population}</h4>
             `
         }
-    }) // megjött a kicsomagolt adat, innentől használhatjuk
+    }) 
