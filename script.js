@@ -41,13 +41,14 @@ fetch("https://restcountries.com/v3.1/all") // elküldjük adatért a JS-t, viss
     .then((data) => { // megjött a kicsomagolt adat, innentől használhatjuk
         console.log(data)
 
-        for (let i = 0; i <data.length; i++) {
-            console.log(data[i].name.common)
-            console.log(data[i].population)
+        for (let doc of data) {
+            console.log(doc.altSpellings)
+            console.log(doc.timezones)
 
             rootElement.innerHTML += `
-                <h3>country name: ${data[i].name.common}</h3>
-                <h4>country population: ${data[i].population}</h4>
+                <h3>Languages: ${doc.altSpellings}</h3>
+                <h4>Timezones: ${doc.timezones}</h4>
             `
         }
+        
     }) 
