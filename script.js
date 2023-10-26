@@ -21,10 +21,17 @@ async function init() { // felkészítjük a js-t, hogy a függvényben lesznek 
 
     data.forEach(country => rootElement.insertAdjacentHTML("beforeend", countryComponent(country)))
 
-    const countryElement =  document.querySelector("div.country")
+   /*  const countryElement =  document.querySelector("div.country")
     countryElement.addEventListener("click", () => {
         countryElement.classList.toggle("clicked")
+    }) */
+
+    const countryElements = document.querySelectorAll("div.country")
+        countryElements.forEach((countryElemet) => {
+            countryElemet.addEventListener("click", () => {
+                countryElemet.classList.toggle("clicked")
     })
+})
 }
 
 init()
