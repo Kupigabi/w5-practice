@@ -20,6 +20,11 @@ async function init() { // felkészítjük a js-t, hogy a függvényben lesznek 
     const data = await fetchUrl("https://restcountries.com/v3.1/all")
 
     data.forEach(country => rootElement.insertAdjacentHTML("beforeend", countryComponent(country)))
+
+    const countryElement =  document.querySelector("div.country")
+    countryElement.addEventListener("click", () => {
+        countryElement.classList.toggle("clicked")
+    })
 }
 
 init()
