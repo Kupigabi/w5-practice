@@ -17,6 +17,9 @@ const skeletonComponent = () => `
 const headerButtonComponent = (buttonText) => `
     <button id="${buttonText.toLowerCase()}">${buttonText}</button>
 `
+const footerComponent = (text) => `
+    <p class="footerParagraph">${text}</p>
+`
 
 const countryComponent = (country) => `
     <div class="country">
@@ -40,6 +43,8 @@ async function init() { // felkészítjük a js-t, hogy a függvényben lesznek 
     swapiButtonElement.addEventListener("click", () => {
         mainElement.innerHTML = "Under construction!!!!!!!!!!!!"
     })
+
+    makeDomFromData(["Copyright © 2023 KPG's webpage. All Rights Reserved."], footerElement, footerComponent)
 
     const data = await fetchUrl("https://restcountries.com/v3.1/all")
     makeDomFromData(data, mainElement, countryComponent)
